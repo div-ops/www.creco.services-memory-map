@@ -30,8 +30,8 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          rm -rf ./creco.services/github-editor
-          mv ../out ./creco.services/github-editor
+          rm -rf ./creco.services/memory-map
+          mv ../out ./creco.services/memory-map
           git add -A
           git -c core.hookspath=/dev/null commit -m "${{ github.event.head_commit.message }}"
           git push origin HEAD
