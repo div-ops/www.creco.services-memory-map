@@ -2,7 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { MemoryForm } from "../components/MemoryForm";
 import { useUserInfo } from "../resources/userInfo";
+import { createAuthHeaders } from "../resources/utils";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -46,6 +48,8 @@ const Home: NextPage = () => {
         >
           로그아웃
         </button>
+
+        <MemoryForm onSubmit={requestCreateResource} />
       </div>
     );
   }
@@ -94,4 +98,18 @@ function useResetQueryParam() {
       router.replace({ pathname: router.pathname, query });
     },
   } as const;
+}
+
+async function requestCreateResource(resource: any) {
+  await fetch(`https://app.divops.kr/github-api/api/resource/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...createAuthHeaders(),
+    },
+    body: JSON.stringify({
+      model: "memo",
+      resource,
+    }),
+  });
 }

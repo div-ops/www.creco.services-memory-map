@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createAuthHeaders } from "./utils";
 
 export function useUserInfo() {
   const [user, setUser] = useState<null | string>(null);
@@ -32,13 +33,4 @@ async function fetchUserInfo() {
   );
 
   return await response.json();
-}
-
-function createAuthHeaders() {
-  const Authorization = localStorage.getItem("authorization");
-  if (Authorization != null) {
-    return { Authorization } as const;
-  } else {
-    return {} as any;
-  }
 }
