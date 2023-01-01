@@ -5,6 +5,7 @@ module.exports = (phase, { defaultConfig }) => {
     reactStrictMode: true,
     swcMinify: true,
     basePath: "/memory-map",
+    trailingSlash: true,
     typescript: {
       // !! WARN !!
       // Dangerously allow production builds to successfully complete even if
