@@ -45,7 +45,7 @@ const Home: NextPage = () => {
   if (user != null) {
     return (
       <div>
-        <h1>환영합니다, {user}!</h1>
+        <h1>환영합니다, {user}님!</h1>
         <button
           onClick={() => {
             requestLogout();
