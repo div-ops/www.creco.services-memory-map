@@ -6,6 +6,18 @@ import { MemoryForm } from "../components/MemoryForm";
 import { useUserInfo } from "../resources/userInfo";
 import { createAuthHeaders } from "../resources/utils";
 
+const getBaseUrl = () => {
+  if (typeof window === "undefined") {
+    return "https://app.divops.kr";
+  }
+
+  if (window.location.hostname === "localhost") {
+    return "";
+  } else if (window.location.hostname === "www.creco.services") {
+    return "https://app.divops.kr";
+  }
+};
+
 const Home: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { user, clear } = useUserInfo();
@@ -82,7 +94,7 @@ async function requestLogout() {
 
 function requestLogin() {
   location.assign(
-    `https://app.divops.kr/github-api/request?referrer=${location.href}`
+    `${getBaseUrl()}/github-api/request?referrer=${location.href}`
   );
 }
 
@@ -101,7 +113,7 @@ function useResetQueryParam() {
 }
 
 async function requestCreateResource(resource: any) {
-  await fetch(`https://app.divops.kr/github-api/api/resource/create`, {
+  await fetch(`${getBaseUrl()}/github-api/api/resource/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
