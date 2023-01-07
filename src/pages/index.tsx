@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { MemoryForm } from "../components/MemoryForm";
+import { useMemoryList } from "../resources/memoryList";
 import { useUserInfo } from "../resources/userInfo";
 import { createAuthHeaders } from "../resources/utils";
 
@@ -21,6 +22,8 @@ const getBaseUrl = () => {
 const Home: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { user, clear } = useUserInfo();
+
+  useMemoryList();
 
   const { resetQueryParam } = useResetQueryParam();
   const router = useRouter();
@@ -120,7 +123,7 @@ async function requestCreateResource(resource: any) {
       ...createAuthHeaders(),
     },
     body: JSON.stringify({
-      model: "memo",
+      model: "memory",
       resource,
     }),
   });
