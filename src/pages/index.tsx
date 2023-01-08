@@ -3,7 +3,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { createMemory } from "../api/createMemory";
 import { MemoryForm } from "../components/MemoryForm";
+import { MemorySummary } from "../components/MemorySummary";
 import { TopNav } from "../components/TopNav";
+import { Styled } from "../components/types";
 import { useMemoryList } from "../resources/useMemoryList";
 
 const Home: NextPage = () => {
@@ -48,9 +50,11 @@ const Home: NextPage = () => {
 
       <br />
 
-      {memoryList.map((memory: any) => {
-        return <div key={memory.id}>{JSON.stringify(memory)}</div>;
-      })}
+      <Container>
+        {memoryList.map((memory: any) => (
+          <MemorySummary key={memory.id} {...memory} />
+        ))}
+      </Container>
     </div>
   );
 };
@@ -70,3 +74,7 @@ function useResetQueryParam() {
     },
   } as const;
 }
+
+const Container: Styled = ({ children }) => {
+  return <div css={{ margin: "0 auto", width: "720px" }}>{children}</div>;
+};

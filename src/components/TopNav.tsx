@@ -1,5 +1,7 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { useUserInfo } from "../resources/useUserInfo";
+import { Button } from "./Button";
+import { Styled } from "./types";
 
 export function TopNav() {
   const [user, login, logout] = useUserInfo();
@@ -7,30 +9,67 @@ export function TopNav() {
   if (user == null) {
     return (
       <Container>
-        <h2>로그인하기</h2>
-        <button onClick={login}>로그인</button>
+        <div>
+          <h2>MemoryMap</h2>
+        </div>
+        <Flex.Row>
+          <h4 css={{ marginRight: "8px" }}>로그인하기</h4>
+          <Button onClick={login}>로그아웃</Button>
+        </Flex.Row>
       </Container>
     );
   }
 
   return (
     <Container>
-      <h2>{`환영합니다, ${user.login}님!`}</h2>
-      <button onClick={logout}>로그아웃</button>
+      <div>
+        <h2>MemoryMap</h2>
+      </div>
+      <Flex.Row>
+        <h4 css={{ marginRight: "8px" }}>{`${user.login}`}</h4>
+        <Button onClick={logout}>로그아웃</Button>
+      </Flex.Row>
     </Container>
   );
 }
 
-type Styled = ({ children }: { children: ReactNode }) => JSX.Element;
+const FlexRow: Styled = ({ children }) => (
+  <div
+    children={children}
+    css={{
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+    }}
+  />
+);
 
-const Container: Styled = (props) => (
+const FlexCol: Styled = ({ children }) => (
+  <div
+    children={children}
+    css={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "space-between",
+    }}
+  />
+);
+
+const Flex = {
+  Row: FlexRow,
+  Col: FlexCol,
+};
+
+const Container: Styled = ({ children }) => (
   <div
     css={{
+      padding: "16px 0",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
     }}
-  >
-    {props.children}
-  </div>
+    children={children}
+  />
 );
