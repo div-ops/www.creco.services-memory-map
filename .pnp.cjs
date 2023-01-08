@@ -39,6 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@babel/core", "npm:7.20.12"],\
+            ["@divops/component-footer", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.5"],\
             ["@divops/frontend-configs-cli", "workspace:shared/configs-cli"],\
             ["@divops/gist-storage", "npm:0.0.9"],\
             ["@divops/github-oauth", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.63"],\
@@ -392,6 +393,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@divops/component-footer", [\
+        ["npm:0.0.5", {\
+          "packageLocation": "./.yarn/cache/@divops-component-footer-npm-0.0.5-8229e57c54-56e71d368c.zip/node_modules/@divops/component-footer/",\
+          "packageDependencies": [\
+            ["@divops/component-footer", "npm:0.0.5"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.5", {\
+          "packageLocation": "./.yarn/__virtual__/@divops-component-footer-virtual-cd38cc66ab/0/cache/@divops-component-footer-npm-0.0.5-8229e57c54-56e71d368c.zip/node_modules/@divops/component-footer/",\
+          "packageDependencies": [\
+            ["@divops/component-footer", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.5"],\
+            ["@emotion/react", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:11.10.5"],\
+            ["@types/emotion__react", null],\
+            ["@types/react", "npm:18.0.21"],\
+            ["@types/react-dom", "npm:18.0.6"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@emotion/react",\
+            "@types/emotion__react",\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@divops/frontend-configs-cli", [\
         ["workspace:shared/configs-cli", {\
           "packageLocation": "./shared/configs-cli/",\
@@ -461,6 +492,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@divops/www.creco.services-memory-map", "workspace:."],\
             ["@babel/core", "npm:7.20.12"],\
+            ["@divops/component-footer", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.5"],\
             ["@divops/frontend-configs-cli", "workspace:shared/configs-cli"],\
             ["@divops/gist-storage", "npm:0.0.9"],\
             ["@divops/github-oauth", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.63"],\
