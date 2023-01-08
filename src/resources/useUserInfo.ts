@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { fetchUserInfo } from "../api/fetchUserInfo";
 import { login } from "../api/login";
 
@@ -9,11 +10,25 @@ interface User {
 }
 
 useUserInfo.key = UserInfoKey;
+
 function useUserInfo() {
+  const [isLoading, setLoading] = useState(true);
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const { data: user, refetch } = useQuery<{ data: User }>(
-    UserInfoKey,
-    fetchUserInfo
+    [...UserInfoKey, isLoading],
+    fetchUserInfo,
+    {
+      refetchOnMount: true,
+      refetchOnReconnect: true,
+      refetchOnWindowFocus: true,
+    }
   );
 
   const logout = () => {
@@ -22,7 +37,7 @@ function useUserInfo() {
     refetch();
   };
 
-  return [user?.data, login, logout] as const;
+  return [user?.data, isLoading, login, logout] as const;
 }
 
 export { useUserInfo };

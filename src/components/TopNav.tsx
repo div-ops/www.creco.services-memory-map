@@ -4,7 +4,7 @@ import { Button } from "./Button";
 import { Styled } from "./types";
 
 export function TopNav() {
-  const [user, login, logout] = useUserInfo();
+  const [user, isLoading, login, logout] = useUserInfo();
 
   if (user == null) {
     return (
@@ -13,8 +13,10 @@ export function TopNav() {
           <h2>MemoryMap</h2>
         </div>
         <Flex.Row>
-          <h4 css={{ marginRight: "8px" }}>로그인하기</h4>
-          <Button onClick={login}>로그아웃</Button>
+          <h4 css={{ marginRight: "8px" }}>
+            {isLoading ? "..." : "로그인하기"}
+          </h4>
+          <Button onClick={login}>{isLoading ? "..." : "로그인"}</Button>
         </Flex.Row>
       </Container>
     );
