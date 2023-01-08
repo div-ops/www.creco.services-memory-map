@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchUserInfo } from "../api/fetchUserInfo";
-import { getBaseUrl } from "./utils";
+import { login } from "../api/login";
 
 const UserInfoKey = ["fetchUserInfo"];
 
@@ -16,14 +16,7 @@ function useUserInfo() {
     fetchUserInfo
   );
 
-  const login = () => {
-    location.assign(
-      `${getBaseUrl()}/github-api/request?referrer=${location.href}`
-    );
-  };
-
   const logout = () => {
-    console.log("hello world");
     queryClient.invalidateQueries(UserInfoKey);
     localStorage.removeItem("authorization");
     refetch();

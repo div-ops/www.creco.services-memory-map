@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { createMemory } from "../api/createMemory";
 import { MemoryForm } from "../components/MemoryForm";
 import { TopNav } from "../components/TopNav";
 import { useMemoryList } from "../resources/useMemoryList";
-import { createAuthHeaders, getBaseUrl } from "../resources/utils";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
 
       <MemoryForm
         onSubmit={async (resource: any, summary: any) => {
-          await requestCreateResource(resource, summary);
+          await createMemory(resource, summary);
           await refetch();
         }}
       />
@@ -69,19 +69,4 @@ function useResetQueryParam() {
       router.replace({ pathname: router.pathname, query });
     },
   } as const;
-}
-
-async function requestCreateResource(resource: any, summary: any) {
-  await fetch(`${getBaseUrl()}/github-api/api/resource/create`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...createAuthHeaders(),
-    },
-    body: JSON.stringify({
-      model: "memory",
-      resource,
-      summary,
-    }),
-  });
 }
