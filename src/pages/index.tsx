@@ -1,32 +1,16 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { createMemory } from "../api/createMemory";
 import { MemoryForm } from "../components/MemoryForm";
-import { useMemoryList } from "../resources/memoryList";
-import { useUserInfo } from "../resources/userInfo";
-import { createAuthHeaders } from "../resources/utils";
-
-const getBaseUrl = () => {
-  if (typeof window === "undefined") {
-    return "https://app.divops.kr";
-  }
-
-  if (window.location.hostname === "localhost") {
-    return "";
-  } else if (window.location.hostname === "www.creco.services") {
-    return "https://app.divops.kr";
-  }
-};
+import { TopNav } from "../components/TopNav";
+import { useMemoryList } from "../resources/useMemoryList";
 
 const Home: NextPage = () => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const { user, clear } = useUserInfo();
-
-  useMemoryList();
-
-  const { resetQueryParam } = useResetQueryParam();
   const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [memoryList, refetch] = useMemoryList();
+  const { resetQueryParam } = useResetQueryParam();
 
   useEffect(() => {
     if (!router.isReady) {
@@ -51,55 +35,27 @@ const Home: NextPage = () => {
     return <div>로그인 중</div>;
   }
 
-  if (user != null) {
-    return (
-      <div>
-        <h1>환영합니다, {user}님!</h1>
-        <button
-          onClick={() => {
-            requestLogout();
-            clear();
-          }}
-        >
-          로그아웃
-        </button>
-
-        <MemoryForm onSubmit={requestCreateResource} />
-      </div>
-    );
-  }
-
   return (
     <div>
-      <Head>
-        <title>로그인</title>
-      </Head>
+      <TopNav />
 
-      <main>
-        <h1>로그인하기</h1>
-        <button
-          onClick={() => {
-            requestLogin();
-          }}
-        >
-          로그인
-        </button>
-      </main>
+      <MemoryForm
+        onSubmit={async (resource: any, summary: any) => {
+          await createMemory(resource, summary);
+          await refetch();
+        }}
+      />
+
+      <br />
+
+      {memoryList.map((memory: any) => {
+        return <div key={memory.id}>{JSON.stringify(memory)}</div>;
+      })}
     </div>
   );
 };
 
 export default Home;
-
-async function requestLogout() {
-  localStorage.removeItem("authorization");
-}
-
-function requestLogin() {
-  location.assign(
-    `${getBaseUrl()}/github-api/request?referrer=${location.href}`
-  );
-}
 
 function useResetQueryParam() {
   const router = useRouter();
@@ -113,18 +69,4 @@ function useResetQueryParam() {
       router.replace({ pathname: router.pathname, query });
     },
   } as const;
-}
-
-async function requestCreateResource(resource: any) {
-  await fetch(`${getBaseUrl()}/github-api/api/resource/create`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...createAuthHeaders(),
-    },
-    body: JSON.stringify({
-      model: "memory",
-      resource,
-    }),
-  });
 }
