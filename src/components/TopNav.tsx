@@ -1,3 +1,6 @@
+import { css } from "@emotion/react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { useUserInfo } from "../resources/useUserInfo";
 import { Button } from "./Button";
@@ -5,28 +8,27 @@ import { Styled } from "./types";
 
 export function TopNav() {
   const [user, isLoading, login, logout] = useUserInfo();
+  const router = useRouter();
 
   if (user == null) {
     return (
       <Container>
-        <div>
-          <h2>MemoryMap</h2>
-        </div>
-        <Flex.Row>
-          <h4 css={{ marginRight: "8px" }}>
-            {isLoading ? "..." : "로그인하기"}
-          </h4>
-          <Button onClick={login}>{isLoading ? "..." : "로그인"}</Button>
-        </Flex.Row>
+        <Logo />
+        {router.pathname === "/" && (
+          <Flex.Row>
+            <h4 css={{ marginRight: "8px" }}>
+              {isLoading ? "..." : "로그인하기"}
+            </h4>
+            <Button onClick={login}>{isLoading ? "..." : "로그인"}</Button>
+          </Flex.Row>
+        )}
       </Container>
     );
   }
 
   return (
     <Container>
-      <div>
-        <h2>MemoryMap</h2>
-      </div>
+      <Logo />
       <Flex.Row>
         <h4 css={{ marginRight: "8px" }}>{`${user.login}`}</h4>
         <Button onClick={logout}>로그아웃</Button>
@@ -34,6 +36,20 @@ export function TopNav() {
     </Container>
   );
 }
+
+const Logo = () => {
+  return (
+    <Link href="/">
+      <h2
+        css={css`
+          cursor: pointer;
+        `}
+      >
+        MemoryMap
+      </h2>
+    </Link>
+  );
+};
 
 const FlexRow: Styled = ({ children }) => (
   <div
