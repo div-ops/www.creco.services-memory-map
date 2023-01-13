@@ -2,10 +2,11 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { createMemory } from "../api/createMemory";
+import { Container } from "../components/Container";
 import { MemoryForm } from "../components/MemoryForm";
 import { MemorySummary } from "../components/MemorySummary";
 import { TopNav } from "../components/TopNav";
-import { Styled } from "../components/types";
+import { useResetQueryParam } from "../hooks/useResetQueryParam";
 import { useMemoryList } from "../resources/useMemoryList";
 
 const Home: NextPage = () => {
@@ -60,21 +61,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-function useResetQueryParam() {
-  const router = useRouter();
-
-  return {
-    resetQueryParam: (key: string) => {
-      const query = { ...router.query };
-
-      delete query[key];
-
-      router.replace({ pathname: router.pathname, query });
-    },
-  } as const;
-}
-
-const Container: Styled = ({ children }) => {
-  return <div css={{ margin: "0 auto", width: "720px" }}>{children}</div>;
-};
