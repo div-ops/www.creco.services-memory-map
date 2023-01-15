@@ -5,6 +5,7 @@ import { createMemory } from "../api/createMemory";
 import { Container } from "../components/Container";
 import { MemoryForm } from "../components/MemoryForm";
 import { MemorySummary } from "../components/MemorySummary";
+import { Title } from "../components/Title";
 import { TopNav } from "../components/TopNav";
 import { useResetQueryParam } from "../hooks/useResetQueryParam";
 import { useMemoryList } from "../resources/useMemoryList";
@@ -42,6 +43,10 @@ const Home: NextPage = () => {
     <div>
       <TopNav />
 
+      <Title css={{ margin: "0 auto", width: "720px" }}>
+        📝 메모리 기록하기
+      </Title>
+
       <MemoryForm
         onSubmit={async (resource: any, summary: any) => {
           await createMemory(resource, summary);
@@ -53,7 +58,13 @@ const Home: NextPage = () => {
 
       <Container>
         {memoryList.map((memory: any) => (
-          <MemorySummary key={memory.id} {...memory} />
+          <MemorySummary
+            key={memory.id}
+            {...memory}
+            onClick={() => {
+              router.push(`/memo/${memory.id}`);
+            }}
+          />
         ))}
       </Container>
     </div>
