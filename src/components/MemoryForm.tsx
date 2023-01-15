@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "./Button";
+import { Container } from "./Container";
 import { Styled } from "./types";
 
 interface MemoryFormProps {
@@ -9,9 +10,9 @@ interface MemoryFormProps {
 export function MemoryForm({ onSubmit }: MemoryFormProps) {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
+
   return (
     <Container>
-      <Title>📝 메모리 기록하기</Title>
       <section>
         <textarea
           css={{
@@ -40,11 +41,3 @@ export function MemoryForm({ onSubmit }: MemoryFormProps) {
     </Container>
   );
 }
-
-const Title: Styled = ({ children }) => {
-  return <h3 css={{ padding: "16px 0" }}>{children}</h3>;
-};
-
-const Container: Styled = ({ children }) => {
-  return <div css={{ margin: "0 auto", width: "720px" }}>{children}</div>;
-};
