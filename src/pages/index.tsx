@@ -48,8 +48,8 @@ const Home: NextPage = () => {
       </Title>
 
       <MemoryForm
-        onSubmit={async (resource: any, summary: any) => {
-          await createMemory(resource, summary);
+        onSubmit={async ({ content }: any) => {
+          await createMemory({ content }, { content: content.split("\n")[0] });
           await refetch();
         }}
       />

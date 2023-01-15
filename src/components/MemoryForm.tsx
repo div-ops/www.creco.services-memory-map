@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Button } from "./Button";
 import { Container } from "./Container";
-import { Styled } from "./types";
 
 interface MemoryFormProps {
-  onSubmit: (resource: any, summary: any) => Promise<void>;
+  onSubmit: (resource: any) => Promise<void>;
 }
 
 export function MemoryForm({ onSubmit }: MemoryFormProps) {
@@ -30,7 +29,7 @@ export function MemoryForm({ onSubmit }: MemoryFormProps) {
           disabled={loading}
           onClick={async () => {
             setLoading(true);
-            await onSubmit({ content }, { content: content.split("\n")[0] });
+            await onSubmit({ content });
             setContent("");
             setLoading(false);
           }}

@@ -1,19 +1,26 @@
 import { css } from "@emotion/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMemory } from "../resources/useMemory";
 import { Button } from "./Button";
 import { Container } from "./Container";
 
 interface MemoryViewProps {
   id: string;
-  removeMemory: () => Promise<void>;
+  editMemory: (resource: any) => Promise<void>;
 }
 
-export function MemoryView({ id, removeMemory }: MemoryViewProps) {
+export function MemoryEditor({ id, editMemory }: MemoryViewProps) {
   const router = useRouter();
+  const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
   const [memory, , isLoading] = useMemory({ id });
+
+  useEffect(() => {
+    if (memory != null && memory.content != null) {
+      setContent(memory.content);
+    }
+  }, [memory]);
 
   if (isLoading) {
     return (
@@ -63,11 +70,10 @@ export function MemoryView({ id, removeMemory }: MemoryViewProps) {
             width: 100%;
             resize: none;
             outline: none;
-            border: none;
             padding: 1rem;
           `}
-          disabled={true}
-          value={memory.content}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
       </section>
       <section
@@ -79,23 +85,13 @@ export function MemoryView({ id, removeMemory }: MemoryViewProps) {
           onClick={async () => {
             console.log("제거 버튼 클릭");
             setLoading(true);
-            await removeMemory();
+            await editMemory({ content });
             setLoading(false);
             router.back();
           }}
           disabled={loading}
         >
-          {loading ? "제거 중" : "제거"}
-        </Button>
-        <Button
-          css={css`
-            margin-left: 4px;
-          `}
-          onClick={async () => {
-            router.push(`/memo/${id}/edit`);
-          }}
-        >
-          수정
+          {loading ? "제출 중" : "제출"}
         </Button>
       </section>
     </Container>
