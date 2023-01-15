@@ -6,7 +6,12 @@ type ButtonProps = React.DetailedHTMLProps<
   HTMLButtonElement
 >;
 
-export function Button({ className, children, onClick }: ButtonProps) {
+export function Button({
+  className,
+  children,
+  onClick,
+  disabled,
+}: ButtonProps) {
   return (
     <button
       css={css`
@@ -17,12 +22,17 @@ export function Button({ className, children, onClick }: ButtonProps) {
         border-radius: 6px;
         background-color: unset;
 
-        &:hover {
-          background: #c8c8c8;
-        }
+        ${disabled
+          ? ""
+          : css`
+              &:hover {
+                background: #c8c8c8;
+              }
+            `}
       `}
       onClick={onClick}
       className={className}
+      disabled={disabled}
     >
       {children}
     </button>

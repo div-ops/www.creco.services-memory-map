@@ -83,6 +83,7 @@ export function MemoryView({ id, removeMemory }: MemoryViewProps) {
             setLoading(false);
             router.back();
           }}
+          disabled={loading}
         >
           {loading ? "제거 중" : "제거"}
         </Button>
