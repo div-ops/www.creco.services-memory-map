@@ -2050,7 +2050,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["deep-equal", "npm:2.2.0"],\
             ["call-bind", "npm:1.0.2"],\
-            ["es-get-iterator", "npm:1.1.2"],\
+            ["es-get-iterator", "npm:1.1.3"],\
             ["get-intrinsic", "npm:1.1.3"],\
             ["is-arguments", "npm:1.1.1"],\
             ["is-array-buffer", "npm:3.0.1"],\
@@ -2207,10 +2207,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["es-get-iterator", [\
-        ["npm:1.1.2", {\
-          "packageLocation": "./.yarn/cache/es-get-iterator-npm-1.1.2-e8db4dc1b9-f75e66acb6.zip/node_modules/es-get-iterator/",\
+        ["npm:1.1.3", {\
+          "packageLocation": "./.yarn/cache/es-get-iterator-npm-1.1.3-7911befaac-8fa118da42.zip/node_modules/es-get-iterator/",\
           "packageDependencies": [\
-            ["es-get-iterator", "npm:1.1.2"],\
+            ["es-get-iterator", "npm:1.1.3"],\
             ["call-bind", "npm:1.0.2"],\
             ["get-intrinsic", "npm:1.1.3"],\
             ["has-symbols", "npm:1.0.3"],\
@@ -2218,7 +2218,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-map", "npm:2.0.2"],\
             ["is-set", "npm:2.0.2"],\
             ["is-string", "npm:1.0.7"],\
-            ["isarray", "npm:2.0.5"]\
+            ["isarray", "npm:2.0.5"],\
+            ["stop-iteration-iterator", "npm:1.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4459,6 +4460,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/source-map-js-npm-1.0.2-ee4f9f9b30-c049a7fc4d.zip/node_modules/source-map-js/",\
           "packageDependencies": [\
             ["source-map-js", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["stop-iteration-iterator", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/stop-iteration-iterator-npm-1.0.0-ea451e1609-d04173690b.zip/node_modules/stop-iteration-iterator/",\
+          "packageDependencies": [\
+            ["stop-iteration-iterator", "npm:1.0.0"],\
+            ["internal-slot", "npm:1.0.4"]\
           ],\
           "linkType": "HARD"\
         }]\
