@@ -13,7 +13,7 @@ import { useMemoryList } from "../resources/useMemoryList";
 const Home: NextPage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
-  const [memoryList, refetch] = useMemoryList();
+  const [memoryList, refetch, , isFetching] = useMemoryList();
   const { resetQueryParam } = useResetQueryParam();
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
       <br />
 
       <Container>
-        {memoryList.map((memory: any) => (
+        {(isFetching ? [] : memoryList).map((memory: any) => (
           <MemorySummary
             key={memory.id}
             {...memory}

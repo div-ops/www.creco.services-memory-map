@@ -1,13 +1,18 @@
 import { css } from "@emotion/react";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { useMemory } from "../resources/useMemory";
 import { Button } from "./Button";
 import { Container } from "./Container";
 
 interface MemoryViewProps {
   id: string;
+  removeMemory: () => Promise<void>;
 }
 
-export function MemoryView({ id }: MemoryViewProps) {
+export function MemoryView({ id, removeMemory }: MemoryViewProps) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [memory, , isLoading] = useMemory({ id });
 
   if (isLoading) {
@@ -64,6 +69,23 @@ export function MemoryView({ id }: MemoryViewProps) {
           disabled={true}
           value={memory.content}
         />
+      </section>
+      <section
+        css={css`
+          text-align: right;
+        `}
+      >
+        <Button
+          onClick={async () => {
+            console.log("제거 버튼 클릭");
+            setLoading(true);
+            await removeMemory();
+            setLoading(false);
+            router.back();
+          }}
+        >
+          {loading ? "제거 중" : "제거"}
+        </Button>
       </section>
     </Container>
   );

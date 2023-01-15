@@ -4,11 +4,16 @@ import { useUserInfo } from "./useUserInfo";
 
 export function useMemoryList() {
   const [user] = useUserInfo();
-  const { data: memoryList, refetch } = useQuery(
+  const {
+    data: memoryList,
+    refetch,
+    isLoading,
+    isFetching,
+  } = useQuery(
     ["fetchMemoryList", user?.login],
     async () => (user?.login == null ? [] : (await fetchMemoryList()).data),
     { initialData: [] }
   );
 
-  return [memoryList, refetch] as const;
+  return [memoryList, refetch, isLoading, isFetching] as const;
 }
