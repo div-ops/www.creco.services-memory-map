@@ -1,6 +1,6 @@
+import { ResourceAPI } from "@divops/github-oauth-sdk";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { updateMemory } from "../../../api/updateMemory";
 import { Container } from "../../../components/Container";
 import { MemoryEditor } from "../../../components/MemoryEditor";
 import { Title } from "../../../components/Title";
@@ -26,11 +26,11 @@ const Memo: NextPage = () => {
               return;
             }
 
-            await updateMemory(
+            await ResourceAPI.of("memory").update({
               id,
-              { content },
-              { content: content.split("\n")[0] }
-            );
+              resource: { content },
+              summary: { content: content.split("\n")[0] },
+            });
             router.back();
           }}
         />

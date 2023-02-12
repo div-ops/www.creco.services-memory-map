@@ -1,7 +1,7 @@
+import { ResourceAPI } from "@divops/github-oauth-sdk";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { createMemory } from "../api/createMemory";
 import { Container } from "../components/Container";
 import { MemoryForm } from "../components/MemoryForm";
 import { MemorySummary } from "../components/MemorySummary";
@@ -49,7 +49,10 @@ const Home: NextPage = () => {
 
       <MemoryForm
         onSubmit={async ({ content }: any) => {
-          await createMemory({ content }, { content: content.split("\n")[0] });
+          await ResourceAPI.of("memory").create({
+            resource: { content },
+            summary: { content: content.split("\n")[0] },
+          });
           await refetch();
         }}
       />
