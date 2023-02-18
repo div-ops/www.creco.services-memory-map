@@ -1,7 +1,7 @@
+import { ResourceAPI } from "@divops/github-oauth-sdk";
 import { useQueryClient } from "@tanstack/react-query";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { removeMemory } from "../../../api/removeMemory";
 import { Container } from "../../../components/Container";
 import { MemoryView } from "../../../components/MemoryView";
 import { Title } from "../../../components/Title";
@@ -30,7 +30,7 @@ const Memo: NextPage = () => {
 
             await queryClient.invalidateQueries(["fetchMemoryList"]);
 
-            await removeMemory(id);
+            await ResourceAPI.of("memory").delete({ id });
           }}
         />
       </Container>

@@ -1,5 +1,5 @@
+import { ResourceAPI } from "@divops/github-oauth-sdk";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMemoryList } from "../api/fetchMemoryList";
 import { useUserInfo } from "./useUserInfo";
 
 export function useMemoryList() {
@@ -11,7 +11,10 @@ export function useMemoryList() {
     isFetching,
   } = useQuery(
     ["fetchMemoryList", user?.login],
-    async () => (user?.login == null ? [] : (await fetchMemoryList()).data),
+    async () =>
+      user?.login == null
+        ? []
+        : (await ResourceAPI.of("memory").readList()).data,
     { initialData: [] }
   );
 
