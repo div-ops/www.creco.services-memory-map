@@ -42,7 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@divops/component-footer", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.5"],\
             ["@divops/frontend-configs-cli", "workspace:shared/configs-cli"],\
             ["@divops/gist-storage", "npm:0.0.9"],\
-            ["@divops/github-oauth-sdk", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.21"],\
+            ["@divops/github-oauth-sdk", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.22"],\
             ["@emotion/babel-plugin", "npm:11.10.6"],\
             ["@emotion/react", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:11.10.6"],\
             ["@tanstack/react-query", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:4.24.6"],\
@@ -401,17 +401,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@divops/github-oauth-sdk", [\
-        ["npm:0.0.21", {\
-          "packageLocation": "./.yarn/cache/@divops-github-oauth-sdk-npm-0.0.21-c8988c9e56-f3ecd1baed.zip/node_modules/@divops/github-oauth-sdk/",\
+        ["npm:0.0.22", {\
+          "packageLocation": "./.yarn/cache/@divops-github-oauth-sdk-npm-0.0.22-8bd0b2b825-1cffaaffda.zip/node_modules/@divops/github-oauth-sdk/",\
           "packageDependencies": [\
-            ["@divops/github-oauth-sdk", "npm:0.0.21"]\
+            ["@divops/github-oauth-sdk", "npm:0.0.22"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.21", {\
-          "packageLocation": "./.yarn/__virtual__/@divops-github-oauth-sdk-virtual-a01b7b96d8/0/cache/@divops-github-oauth-sdk-npm-0.0.21-c8988c9e56-f3ecd1baed.zip/node_modules/@divops/github-oauth-sdk/",\
+        ["virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.22", {\
+          "packageLocation": "./.yarn/__virtual__/@divops-github-oauth-sdk-virtual-6dbed5b9d8/0/cache/@divops-github-oauth-sdk-npm-0.0.22-8bd0b2b825-1cffaaffda.zip/node_modules/@divops/github-oauth-sdk/",\
           "packageDependencies": [\
-            ["@divops/github-oauth-sdk", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.21"],\
+            ["@divops/github-oauth-sdk", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.22"],\
             ["@types/next", null],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -439,7 +439,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@divops/component-footer", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.5"],\
             ["@divops/frontend-configs-cli", "workspace:shared/configs-cli"],\
             ["@divops/gist-storage", "npm:0.0.9"],\
-            ["@divops/github-oauth-sdk", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.21"],\
+            ["@divops/github-oauth-sdk", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:0.0.22"],\
             ["@emotion/babel-plugin", "npm:11.10.6"],\
             ["@emotion/react", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:11.10.6"],\
             ["@tanstack/react-query", "virtual:5ad10f9f322b67de2dcb251d0a18e8e0ccd397332e4cfa959aad86c74c23b8b0ddfa680817117fbb6907fdf760e2eaaf4e49030ee723493d0d139addbf1164e2#npm:4.24.6"],\
