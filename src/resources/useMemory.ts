@@ -1,5 +1,5 @@
-import { ResourceAPI } from "@divops/github-oauth-sdk";
 import { useQuery } from "@tanstack/react-query";
+import { MemoryAPI } from "../api/index";
 
 export function useMemory({ id }: { id: string }) {
   const {
@@ -11,7 +11,7 @@ export function useMemory({ id }: { id: string }) {
       return null;
     }
 
-    return (await ResourceAPI.of("memory").read({ id })).data;
+    return (await MemoryAPI.read({ id })).data;
   });
 
   return [memory, refetch, isLoading] as const;

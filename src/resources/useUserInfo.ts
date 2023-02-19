@@ -1,6 +1,6 @@
-import { UserAPI } from "@divops/github-oauth-sdk";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { UserAPI } from "../api/index";
 
 const UserInfoKey = ["fetchUserInfo"];
 
@@ -22,7 +22,7 @@ function useUserInfo() {
 
   const { data: user, refetch } = useQuery<{ data: User }>(
     [...UserInfoKey, isLoading],
-    UserAPI.of().fetchUser,
+    UserAPI.fetchUser,
     {
       refetchOnMount: true,
       refetchOnReconnect: true,
@@ -36,7 +36,7 @@ function useUserInfo() {
     refetch();
   };
 
-  return [user?.data, isLoading, UserAPI.of().loginUser, logout] as const;
+  return [user?.data, isLoading, UserAPI.loginUser, logout] as const;
 }
 
 export { useUserInfo };
